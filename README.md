@@ -244,10 +244,6 @@ class User(UserMixin):
     }
 
     def __init__(self, id):
-        with open('users.json') as datoteka:
-            self.USERS = json.load(datoteka)
-            datoteka.close()
-
         if not id in self.USERS:
             raise UserNotFoundError()
         self.id = id
