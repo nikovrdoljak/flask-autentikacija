@@ -437,7 +437,7 @@ Sadržaj emaila može biti npr. ovakav:
 Poštovani {{ user.username }},
 Da biste potvrdili svoju prijavu, molimo kliknite na slijedeći link:
 {{ url_for('confirm', token=token, _external=True) }}
-Srdačan pozdrav!
+Srdačan pozdrav.
 ```
 A pripadna ruta bi izgledala ovako:
 ```python
