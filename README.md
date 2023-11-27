@@ -263,7 +263,7 @@ Dodajmo login rutu (za sad nećemo provjeravati zaporku):
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.get(form.email.data)
         if user is not None:
             login_user(user, form.remember_me.data)
             next = request.args.get('next')
@@ -276,7 +276,7 @@ def login():
 ```
 Dodajmo i 
 ```python
-from flask import request, flash
+from flask import request, flash, redirect, url_for
 ```
 Te na kraju dodajmo u ```index.html```:
 ```html
