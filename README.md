@@ -85,19 +85,7 @@ Kreirajmo mapu ```templates``` te u nju dodajmo dvije datoteke:
 ```html
 {% extends "base.html" %}
 {% block content %}
-<h1>Vrijeme i vremenska prognoza</h1>
-<div class="card" style="width: 24rem;">
-    <h4 class="card-header">
-        Grad
-    </h4>
-    <div class="card-body">
-        <h5 class="card-title">Opis vremenske situacije</h5>
-        <div class="card-text">
-            <p>Temperatura:  C˙</p>
-     </div>
-    </div>
-</div>
-
+<h1>Početna stranica</h1>
 {% endblock %}
 ```
 
@@ -164,11 +152,11 @@ pbkdf2:sha256:50000$ClVWrTj0$d9ef0819c7bcd9ac996079d284f87f4969f3ba09e504c58a839
 True
 ```
 
-### Zadatak 9 - forma za prijavu
+### Forma za prijavu
 Dodat ćemo sad formu za logiranje te pripadnu programsku logiku uz pomoć [flask-login](https://flask-login.readthedocs.io/en/latest/) ekstenzije. Dodajmo najprije klasu za *login* formu u ```app.py```:
 ```python
 class LoginForm(FlaskForm):
-    email = TextField('E-mail', validators=[DataRequired(), Length(1, 64), Email()])
+    email = StringField('E-mail', validators=[DataRequired(), Length(1, 64), Email()])
     password = PasswordField('Zaporka', validators=[DataRequired()])
     remember_me = BooleanField('Ostani prijavljen')
     submit = SubmitField('Prijava')
