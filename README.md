@@ -236,7 +236,29 @@ def load_user(user_id):
 ```
 I promijenimo ```User``` klasu da naslijeđuje i tzv. ```UserMixin``` klasu:
 ```python
-class User(UserMixin, db.Model):
+class User(UserMixin):
+    USERS = {
+        'jure@unizd.hr': 'sifra1',
+        'ana@unizd.hr': 'sifra2',
+        'ivana@unizd.hr': 'sifra3'
+    }
+
+    def __init__(self, id):
+        with open('users.json') as datoteka:
+            self.USERS = json.load(datoteka)
+            datoteka.close()
+
+        if not id in self.USERS:
+            raise UserNotFoundError()
+        self.id = id
+        self.password = self.USERS[id]
+         
+    @classmethod
+    def get(self_class, id):
+        try:
+            return self_class(id)
+        except UserNotFoundError:
+            return None
 ```
 
 Dodajmo login rutu (za sad nećemo provjeravati zaporku):
