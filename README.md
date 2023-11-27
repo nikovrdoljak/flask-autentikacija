@@ -118,9 +118,9 @@ Primijetite da koristimo Boostrap 5, te da smo u baznoj stranicu iskoristili mac
 
 # Autentikacija
 
-* Proces u kojem ustanovljavamo tko ili što jest ili se deklarira da je
-* Odvija se na način da uspoređujemo vjerodajnice (credentials) korisnika sa vjerodajnicama spremljenim u bazi autentikacijskog poslužitelja
-* Autentikacija je bitna jer omogućava da određenim resursima smiju pristupiti samo ovlašteni korisnici ili procesi 
+* Proces u kojem ustanovljavamo tko ili što jest ili se deklarira da je.
+* Odvija se na način da uspoređujemo vjerodajnice (credentials) korisnika sa vjerodajnicama spremljenim u bazi autentikacijskog poslužitelja.
+* Autentikacija je bitna jer omogućava da određenim resursima smiju pristupiti samo ovlašteni korisnici ili procesi .
 
 ## Faktori autentikacije
 * **Faktor znanja** – ono što korisnik zna – zaporka, fraza, PIN, odgovor na pitanje
