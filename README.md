@@ -335,7 +335,7 @@ def logout():
     return redirect(url_for('index'))
 ```
 
-Dodajmo i podršku za "flash" poruke u ``base.html``` odhmah ispod "container" elementa:
+Dodajmo i podršku za "flash" poruke u ```base.html``` odhmah ispod "container" elementa:
 ```html
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -410,19 +410,31 @@ A u ```def __init__``` metodu dodajmo da se korisnici učitavaju iz Json datotek
             self.USERS = json.load(datoteka)
             datoteka.close()
 ```
-
+Datoteku ```users.json``` ostavite praznu, tj. samo dodajte u nju prazan objekt.
 ```Json
-{
-  "jure@unizd.hr": "sifra1",
-  "ana@unizd.hr": "sifra2",
-  "ivana@unizd.hr": "sifra3"
-}
+{}
 ```
 Dodajmo i:
 ```python
 import json
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 ```
+Registrirajte novog korisnika, i provjerite kako izgleda ```users.json``` datoteka. Zaporka u njoj je sad kriptirana. Npr:
+```Json
+{
+  "matija@unizd.hr": "scrypt:32768:8:1$y27uyvE4lEnKyvur$41165227159253a69f7d7784c297676f39dc8e9ee716a05002d32a3396ddcddd4c1f46e5696d6cd31c8e32d874091e9cbc24cfbcdb8f1898dee62e1d769e30e2"
+}
+```
+
+U prijašnjem scenariju nismo provjeravali zaporku kod prijave, pa napravimo i to. U funkciju ```login``` rute nakon provjere da li korisnik postoji dodajte provjeru zaporke koju je korisnik upisao s onom koja se nalazi u datoteci nastaloj prilikom registracije:
+```python
+       if user is not None:
+            if not check_password_hash(user.password, form.password.data):
+                flash('Neispravno korisničko ime ili zaporka!', category='success')
+                return render_template('login.html', form=form)
+```
+
+
 
 ### Potvrda registracije
 Ovdje ćemo samo pokazati kako bi trebao izgledati proces potvrde registracije. Naime jedan od obaveznih koraka pri registraciji je potvrda iste mailom, gdje korisnik mora kliknuti aktivacijski link.
