@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Prijava{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Prijava</h1>
+    </div>
+    <div class="col-md-4">
+        {{ render_form(form) }}
+    </div>
+
+    <div class="col-md-12" class="mt-5">
+        Novi korisnik?<br> <a href="{{url_for('register')}}" class="btn btn-warning">Registrirajte se</a>
+    </div>
+    
+</div>
+
+
+{% endblock %}

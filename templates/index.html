@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Moja web stranica</h1>
+
+<h4>current_user:</h4>
+<p>username: <b>{{current_user.username}}</b></p>
+<p>is_authenticated: <b>{{current_user.is_authenticated}}</b></p>
+<p>is_active: <b>{{current_user.is_active}}</b></p>
+<p>is_anonymous: <b>{{current_user.is_anonymous}}</b></p>
+<p>get_id(): <b>{{current_user.get_id()}}</b></p>
+
+{% endblock %}
