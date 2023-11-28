@@ -476,6 +476,3 @@ def confirm(token):
 * Promjena passworda
 * Resetiranje passworda
 * Promjena email adrese
-
-## Slijedeće
-Autorizacija i korištenje ```flask-principal``` ekstenzije.
